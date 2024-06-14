@@ -9,7 +9,7 @@ on:
 jobs:
   python-tests:
     name: Python Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestcm
 
     steps:
     - name: Checkout repository
