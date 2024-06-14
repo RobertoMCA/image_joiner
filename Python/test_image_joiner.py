@@ -1,7 +1,7 @@
 import unittest
 import os
 from PIL import Image
-from image_joiner import join_images
+from Python.image_joiner import join_images
 
 class TestJoinImages(unittest.TestCase):
 
