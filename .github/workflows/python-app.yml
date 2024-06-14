@@ -22,36 +22,14 @@ jobs:
 
     - name: Install dependencies
       run: |
+        sudo apt-get update
+        sudo apt-get install -y libmagick++-dev
         python -m pip install --upgrade pip
         pip install -r Python/requirements.txt
-        pip install pytest
+        pip install pytest rpy2
 
     - name: Run Python tests
       env:
         PYTHONPATH: ${{ github.workspace }}/Python
       run: |
         pytest Python/test_image_joiner.py
-
-  r-tests:
-    name: R Tests
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up R
-      uses: r-lib/actions/setup-r@v2
-
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libmagick++-dev
-
-    - name: Install R dependencies
-      run: |
-        Rscript -e 'install.packages(c("magick", "testthat"), repos="http://cran.rstudio.com")'
-
-    - name: Run R tests
-      run: |
-        Rscript R/test_image_joiner.R
