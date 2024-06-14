@@ -1,1 +1,1 @@
-from image_joiner import *
+from Python.image_joiner import *
