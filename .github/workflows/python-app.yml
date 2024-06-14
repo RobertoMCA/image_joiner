@@ -24,6 +24,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r Python/requirements.txt
+        pip install pytest
 
     - name: Run Python tests
       run: |
@@ -42,9 +43,10 @@ jobs:
 
     - name: Install R dependencies
       run: |
-        Rscript -e 'install.packages(c("magick", "testthat"))'
+        Rscript -e 'install.packages(c("magick", "testthat"), repos="http://cran.rstudio.com")'
 
     - name: Run R tests
       run: |
         Rscript R/test_image_joiner.R
+
 
